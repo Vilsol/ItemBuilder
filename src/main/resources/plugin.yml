@@ -1,0 +1,6 @@
+name: ItemBuilder
+main: me.vilsol.ItemBuilder
+version: 1.0
+commands:
+   edit:
+      usage: /<command>
