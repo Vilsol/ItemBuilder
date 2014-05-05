@@ -29,7 +29,7 @@ public class DynamicLoreMenu extends DynamicMenuModel {
 			}
 		}
 		
-		i.addItemDynamic(AddLoreLine.class, x + 1);
+		if(x < 53) i.addItemDynamic(AddLoreLine.class, x + 1);
 		i.addItemDynamic(ToMainMenu.class, 0);
 	}
 
