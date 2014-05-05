@@ -20,7 +20,7 @@ public class ToMainMenu implements MenuItem {
 
 	@Override
 	public void execute(Player plr, ClickType click) {
-		MenuModel.menus.get(MainMenu.class).showToPlayer(plr);
+		MenuModel.menus.get(MainMenu.class).getMenu().showToPlayer(plr);
 	}
 
 	@Override

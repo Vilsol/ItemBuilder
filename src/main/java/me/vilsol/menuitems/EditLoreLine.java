@@ -8,8 +8,8 @@ import me.vilsol.Utils;
 import me.vilsol.jsonlib.JSONMessage;
 import me.vilsol.menuengine.engine.BonusItem;
 import me.vilsol.menuengine.engine.ChatCallback;
+import me.vilsol.menuengine.engine.DynamicMenuModel;
 import me.vilsol.menuengine.engine.MenuItem;
-import me.vilsol.menuengine.engine.MenuModel;
 import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
 
@@ -39,7 +39,7 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 			lore.remove(line);
 			m.setLore(lore);
 			plr.getItemInHand().setItemMeta(m);
-			MenuModel.openLastMenu(plr);
+			DynamicMenuModel.openLastMenu(plr);
 		}else if(click == ClickType.LEFT){
 			ChatCallback.locked_players.put(plr, this);
 			plr.closeInventory();
@@ -67,7 +67,7 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 			lore.set(line, "");
 			m.setLore(lore);
 			plr.getItemInHand().setItemMeta(m);
-			MenuModel.openLastMenu(plr);
+			DynamicMenuModel.openLastMenu(plr);
 		}
 	}
 
@@ -89,7 +89,7 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 			e.getPlayer().getItemInHand().setItemMeta(m);
 		}
 
-		MenuModel.openLastMenu(e.getPlayer());
+		DynamicMenuModel.openLastMenu(e.getPlayer());
 		ChatCallback.locked_players.remove(e.getPlayer());
 	}
 

@@ -1,6 +1,5 @@
 package me.vilsol.menuitems.switchitems;
 
-import me.vilsol.menuengine.engine.DynamicMenuModel;
 import me.vilsol.menuengine.engine.MenuItem;
 import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
@@ -20,7 +19,7 @@ public class ToDynamicLoreMenu implements MenuItem {
 
 	@Override
 	public void execute(Player plr, ClickType click) {
-		DynamicMenuModel.menus.get(DynamicLoreMenu.class).showToPlayer(plr);
+		DynamicLoreMenu.createMenu(plr, DynamicLoreMenu.class).showToPlayer(plr);;
 	}
 
 	@Override

@@ -3,8 +3,8 @@ package me.vilsol.menuitems;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.vilsol.menuengine.engine.DynamicMenuModel;
 import me.vilsol.menuengine.engine.MenuItem;
-import me.vilsol.menuengine.engine.MenuModel;
 import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
 
@@ -28,7 +28,7 @@ public class AddLoreLine implements MenuItem {
 		lore.add("");
 		m.setLore(lore);
 		plr.getItemInHand().setItemMeta(m);
-		MenuModel.openLastMenu(plr);
+		DynamicMenuModel.openLastMenu(plr);
 	}
 
 	public ItemStack getItem() {

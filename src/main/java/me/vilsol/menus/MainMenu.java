@@ -13,12 +13,12 @@ public class MainMenu extends MenuModel {
 
 	public MainMenu() {
 		super(9, ChatColor.GOLD + "" + ChatColor.BOLD + "ItemBuilder" + ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " 1.0");
-		addItem(EditName.class, 0);
-		addItem(EditAmount.class, 1);
-		addItem(EditDurability.class, 2);
-		addItem(ToDynamicLoreMenu.class, 3);
+		menu.addItem(EditName.class, 0);
+		menu.addItem(EditAmount.class, 1);
+		menu.addItem(EditDurability.class, 2);
+		menu.addItem(ToDynamicLoreMenu.class, 3);
 		
-		addItem(ConvertToEssentials.class, 8);
+		menu.addItem(ConvertToEssentials.class, 8);
 	}
 	
 }
