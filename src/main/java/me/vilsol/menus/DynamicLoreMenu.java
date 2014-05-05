@@ -1,5 +1,7 @@
 package me.vilsol.menus;
 
+import java.util.Arrays;
+
 import me.vilsol.menuengine.engine.DynamicMenuModel;
 import me.vilsol.menuengine.enums.InventorySize;
 import me.vilsol.menuitems.AddLoreLine;
@@ -22,7 +24,7 @@ public class DynamicLoreMenu extends DynamicMenuModel {
 		int x = 0;
 		if(m.getLore() != null){
 			for(x = 0; x < m.getLore().size(); x++){
-				addItemDynamic(EditLoreLine.class, i, x + 1, x);
+				addItemDynamic(EditLoreLine.class, i, x + 1, Arrays.asList(x, m.getLore().get(x)));
 			}
 		}
 		

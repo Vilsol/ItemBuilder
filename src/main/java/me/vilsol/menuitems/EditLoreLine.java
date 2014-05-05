@@ -1,6 +1,7 @@
 package me.vilsol.menuitems;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import me.vilsol.Utils;
@@ -22,6 +23,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 
 	private int line;
+	private String lore;
 	
 	@Override
 	public void registerItem() {
@@ -38,10 +40,10 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 			m.setLore(lore);
 			plr.getItemInHand().setItemMeta(m);
 			MenuModel.openLastMenu(plr);
-		}else{
+		}else if(click == ClickType.LEFT){
 			ChatCallback.locked_players.put(plr, this);
 			plr.closeInventory();
-			plr.sendMessage("Enter durability for the item, '-' to cancel.");
+			plr.sendMessage("Enter lore for the item, '-' to cancel.");
 			Utils.sendEditorMessage(plr);
 			if(plr.getItemInHand().getItemMeta().getLore() == null) return;
 			if(plr.getItemInHand().getItemMeta().getLore().size() - 1 >= line){
@@ -51,11 +53,26 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 				m.addSuggestCommand("Current line (click): " + plr.getItemInHand().getItemMeta().getLore().get(line), ChatColor.WHITE, con);
 				m.sendToPlayer(plr);
 			}
+		}else if(click == ClickType.MIDDLE){
+			if(plr.getItemInHand().getType() == Material.AIR) return;
+			ItemMeta m = plr.getItemInHand().getItemMeta();
+			List<String> lore = m.getLore();
+			if(lore == null) return;
+			
+			lore.add("");
+			for(int x = lore.size() - 2; x >= 0; x--){
+				lore.set(x+1, lore.get(x));
+			}
+			
+			lore.set(line, "");
+			m.setLore(lore);
+			plr.getItemInHand().setItemMeta(m);
+			MenuModel.openLastMenu(plr);
 		}
 	}
 
 	public ItemStack getItem() {
-		ItemStack i = new Builder(Material.BOOK_AND_QUILL).setName(ChatColor.GOLD + "Change Lore Line " + (line + 1) + " (RightClick to delete)").getItem();
+		ItemStack i = new Builder(Material.BOOK_AND_QUILL).setName(lore).setLore(Arrays.asList(ChatColor.GOLD + "LeftClick: Change Lore Line (" + (line + 1) + ")", ChatColor.GOLD + "RightClick: Delete Lore Line (" + (line + 1) + ")", ChatColor.GOLD + "MiddleClick: Insert Empty Line Before (" + (line + 1) + ")")).getItem();
 		return i;
 	}
 
@@ -76,9 +93,12 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 		ChatCallback.locked_players.remove(e.getPlayer());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setBonusData(Object o) {
-		line = (int) o;
+		List<Object> d = (List<Object>) o;
+		line = (int) d.get(0);
+		lore = (String) d.get(1);
 	}
 	
 }
