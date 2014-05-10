@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import me.vilsol.Utils;
+import me.vilsol.jsonlib.ClickAction;
 import me.vilsol.jsonlib.JSONMessage;
+import me.vilsol.jsonlib.MessageBlock;
 import me.vilsol.menuengine.engine.BonusItem;
 import me.vilsol.menuengine.engine.ChatCallback;
 import me.vilsol.menuengine.engine.DynamicMenuModel;
@@ -47,10 +49,10 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 			Utils.sendEditorMessage(plr);
 			if(plr.getItemInHand().getItemMeta().getLore() == null) return;
 			if(plr.getItemInHand().getItemMeta().getLore().size() - 1 >= line){
-				JSONMessage m = new JSONMessage("", ChatColor.WHITE);
+				JSONMessage m = new JSONMessage();
 				String con = plr.getItemInHand().getItemMeta().getLore().get(line);
 				con = con.replace('§', '&');
-				m.addSuggestCommand("Current line (click): " + plr.getItemInHand().getItemMeta().getLore().get(line), ChatColor.WHITE, con);
+				m.addBlock(new MessageBlock().setClickEvent(ClickAction.SUGGEST_COMMAND, con).setText("Current line (click): " + plr.getItemInHand().getItemMeta().getLore().get(line)).setColor(ChatColor.WHITE));
 				m.sendToPlayer(plr);
 			}
 		}else if(click == ClickType.MIDDLE){

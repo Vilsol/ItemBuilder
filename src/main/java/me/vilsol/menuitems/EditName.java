@@ -1,6 +1,8 @@
 package me.vilsol.menuitems;
 
 import me.vilsol.Utils;
+import me.vilsol.jsonlib.ClickAction;
+import me.vilsol.jsonlib.MessageBlock;
 import me.vilsol.jsonlib.JSONMessage;
 import me.vilsol.menuengine.engine.ChatCallback;
 import me.vilsol.menuengine.engine.MenuItem;
@@ -27,11 +29,9 @@ public class EditName implements MenuItem, ChatCallback {
 		plr.sendMessage("Enter a new name for the item or '-' to cancel.");
 		Utils.sendEditorMessage(plr);
 		if(plr.getItemInHand().getItemMeta().getDisplayName() == null) return;
-		JSONMessage m = new JSONMessage("", ChatColor.WHITE);
 		String con = plr.getItemInHand().getItemMeta().getDisplayName();
 		con = con.replace('§', '&');
-		m.addSuggestCommand("Current name (click): " + plr.getItemInHand().getItemMeta().getDisplayName(), ChatColor.WHITE, con);
-		m.sendToPlayer(plr);
+		new JSONMessage().addBlock(new MessageBlock().setClickEvent(ClickAction.SUGGEST_COMMAND, con).setText("Current name (click): ")).sendToPlayer(plr);
 	}
 
 	public ItemStack getItem() {
