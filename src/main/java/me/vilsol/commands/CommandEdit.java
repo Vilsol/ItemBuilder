@@ -27,7 +27,7 @@ public class CommandEdit implements CommandExecutor {
 		}
 		
 		// Show the menu
-		MenuModel.menus.get(MainMenu.class).getMenu().showToPlayer(p);
+		MenuModel.getMenu(MainMenu.class).getMenu().showToPlayer(p);
 		
 		return true;
 	}

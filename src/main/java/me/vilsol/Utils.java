@@ -5,11 +5,11 @@ import java.util.HashMap;
 
 import me.vilsol.jsonlib.JSONMessage;
 import me.vilsol.jsonlib.MessageBlock;
-import net.minecraft.server.v1_7_R2.ChatSerializer;
-import net.minecraft.server.v1_7_R2.PacketPlayOutChat;
+import net.minecraft.server.v1_7_R4.ChatSerializer;
+import net.minecraft.server.v1_7_R4.PacketPlayOutChat;
 
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_7_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

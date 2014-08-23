@@ -12,17 +12,17 @@ import me.vilsol.menuengine.engine.BonusItem;
 import me.vilsol.menuengine.engine.ChatCallback;
 import me.vilsol.menuengine.engine.DynamicMenuModel;
 import me.vilsol.menuengine.engine.MenuItem;
-import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
+public class EditLoreLine implements ChatCallback, BonusItem<List<Object>> {
 
 	private int line;
 	private String lore;
@@ -95,12 +95,10 @@ public class EditLoreLine implements MenuItem, ChatCallback, BonusItem {
 		ChatCallback.locked_players.remove(e.getPlayer());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public void setBonusData(Object o) {
-		List<Object> d = (List<Object>) o;
-		line = (int) d.get(0);
-		lore = (String) d.get(1);
+	public void setBonusData(List<Object> o) {
+		line = (int) o.get(0);
+		lore = (String) o.get(1);
 	}
 	
 }

@@ -2,17 +2,17 @@ package me.vilsol.menuitems;
 
 import me.vilsol.Utils;
 import me.vilsol.jsonlib.ClickAction;
-import me.vilsol.jsonlib.MessageBlock;
 import me.vilsol.jsonlib.JSONMessage;
+import me.vilsol.jsonlib.MessageBlock;
 import me.vilsol.menuengine.engine.ChatCallback;
 import me.vilsol.menuengine.engine.MenuItem;
 import me.vilsol.menuengine.engine.MenuModel;
-import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,7 +31,7 @@ public class EditName implements MenuItem, ChatCallback {
 		if(plr.getItemInHand().getItemMeta().getDisplayName() == null) return;
 		String con = plr.getItemInHand().getItemMeta().getDisplayName();
 		con = con.replace('§', '&');
-		new JSONMessage().addBlock(new MessageBlock().setClickEvent(ClickAction.SUGGEST_COMMAND, con).setText("Current name (click): ")).sendToPlayer(plr);
+		new JSONMessage().addBlock(new MessageBlock().setClickEvent(ClickAction.SUGGEST_COMMAND, con).setText("Current name (click): " + plr.getItemInHand().getItemMeta().getDisplayName())).sendToPlayer(plr);
 	}
 
 	public ItemStack getItem() {

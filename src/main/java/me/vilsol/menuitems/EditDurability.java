@@ -4,12 +4,12 @@ import me.vilsol.Utils;
 import me.vilsol.menuengine.engine.ChatCallback;
 import me.vilsol.menuengine.engine.MenuItem;
 import me.vilsol.menuengine.engine.MenuModel;
-import me.vilsol.menuengine.enums.ClickType;
 import me.vilsol.menuengine.utils.Builder;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 
